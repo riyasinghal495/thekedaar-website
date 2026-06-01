@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Thekedaar – Find Trusted Contractors Near You</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--orange:#F97316;--orange-light:#FFF7ED;--orange-dark:#C2410C;
+--navy:#111827;--navy-light:#1F2937;
+--blue:#2563EB;--blue-light:#EFF6FF;
+--green:#22C55E;--green-light:#F0FDF4;
+--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-400:#9CA3AF;--gray-600:#4B5563;--gray-800:#1F2937;
+--white:#FFFFFF;
+--font-display:'Syne',sans-serif;
+--font-body:'DM Sans',sans-serif;
+--radius:12px;--radius-lg:20px;--radius-xl:28px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--navy);background:var(--white);overflow-x:hidden;line-height:1.6}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-dot{width:10px;height:10px;background:var(--orange);border-radius:50%;display:inline-block}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--gray-600);font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--orange)}
+.nav-cta{display:flex;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:.6rem 1.4rem;border-radius:50px;font-family:var(--font-body);font-weight:600;font-size:.9rem;cursor:pointer;text-decoration:none;transition:all .2s;border:none}
+.btn-outline{background:transparent;border:1.5px solid var(--gray-200);color:var(--navy)}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange)}
+.btn-primary{background:var(--orange);color:var(--white)}
+.btn-primary:hover{background:var(--orange-dark);transform:translateY(-1px)}
+.btn-lg{padding:.85rem 2rem;font-size:1rem}
+.btn-dark{background:var(--navy);color:var(--white)}
+.btn-dark:hover{background:var(--navy-light)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:22px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.container{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:var(--orange-light);color:var(--orange);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.35rem 1rem;border-radius:50px;margin-bottom:1rem}
+.section-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:1rem}
+.section-subtitle{color:var(--gray-600);font-size:1.05rem;max-width:600px;line-height:1.7}
+.text-center{text-align:center}
+.text-center .section-subtitle{margin:0 auto}
+
+/* HERO */
+#hero{padding-top:120px;padding-bottom:80px;background:linear-gradient(135deg,var(--white) 0%,var(--gray-50) 60%,var(--orange-light) 100%);min-height:90vh;display:flex;align-items:center}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--gray-200);border-radius:50px;padding:.45rem 1rem .45rem .45rem;font-size:.82rem;font-weight:500;margin-bottom:1.5rem;color:var(--gray-600)}
+.hero-badge-dot{width:26px;height:26px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:white}
+h1.hero-title{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;line-height:1.1;margin-bottom:1.2rem;color:var(--navy)}
+h1.hero-title span{color:var(--orange)}
+.hero-sub{font-size:1.1rem;color:var(--gray-600);line-height:1.8;margin-bottom:2rem;max-width:480px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:2.5rem}
+.hero-stats{display:flex;gap:2rem;flex-wrap:wrap}
+.hero-stat strong{display:block;font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--navy)}
+.hero-stat span{font-size:.82rem;color:var(--gray-600)}
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.hero-card-stack{position:relative;width:100%;max-width:420px;height:460px}
+.hero-main-card{background:var(--white);border-radius:var(--radius-xl);padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,.1);border:1px solid var(--gray-200)}
+.hero-worker-row{display:flex;align-items:center;gap:12px;padding:.75rem 0;border-bottom:1px solid var(--gray-100)}
+.hero-worker-row:last-child{border-bottom:none}
+.avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0}
+.av-orange{background:#FFF7ED;color:var(--orange)}
+.av-blue{background:#EFF6FF;color:var(--blue)}
+.av-green{background:#F0FDF4;color:var(--green)}
+.av-purple{background:#F5F3FF;color:#7C3AED}
+.worker-info{flex:1}
+.worker-name{font-weight:600;font-size:.9rem;color:var(--navy)}
+.worker-role{font-size:.78rem;color:var(--gray-600)}
+.worker-rating{font-size:.82rem;font-weight:600;color:var(--orange)}
+.float-badge{position:absolute;background:var(--white);border-radius:var(--radius);padding:.7rem 1rem;box-shadow:0 8px 30px rgba(0,0,0,.12);font-size:.82rem;font-weight:600;white-space:nowrap;animation:float 3s ease-in-out infinite}
+.float-badge-1{top:-20px;right:-20px;animation-delay:0s;color:var(--green)}
+.float-badge-2{bottom:20px;left:-30px;animation-delay:1s;color:var(--blue)}
+.float-badge-3{top:40%;right:-40px;animation-delay:2s;color:var(--orange)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* TRUST BAR */
+#trust{padding:32px 5%;background:var(--navy)}
+.trust-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.trust-item{text-align:center;padding:1.5rem}
+.trust-num{font-family:var(--font-display);font-size:2.2rem;font-weight:800;color:var(--orange)}
+.trust-label{color:rgba(255,255,255,.7);font-size:.88rem;margin-top:.3rem}
+
+/* SERVICES */
+#services{background:var(--gray-50)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-top:3rem}
+.service-card{background:var(--white);border-radius:var(--radius-lg);padding:1.5rem;text-align:center;border:1px solid var(--gray-200);cursor:pointer;transition:all .25s;text-decoration:none;color:inherit}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(249,115,22,.15);border-color:var(--orange)}
+.service-card:hover .service-icon{background:var(--orange);color:var(--white)}
+.service-icon{width:52px;height:52px;border-radius:14px;background:var(--orange-light);color:var(--orange);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;transition:all .25s}
+.service-name{font-weight:600;font-size:.9rem;color:var(--navy)}
+
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem;position:relative}
+.steps::before{content:'';position:absolute;top:40px;left:10%;right:10%;height:2px;background:repeating-linear-gradient(90deg,var(--orange) 0,var(--orange) 12px,transparent 12px,transparent 24px);z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:80px;height:80px;border-radius:50%;background:var(--white);border:3px solid var(--orange);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--orange);box-shadow:0 4px 20px rgba(249,115,22,.2)}
+.step-title{font-weight:700;font-size:1rem;margin-bottom:.4rem;color:var(--navy)}
+.step-desc{font-size:.85rem;color:var(--gray-600);line-height:1.6}
+
+/* WHY US */
+#why{background:var(--gray-50)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:3rem}
+.why-card{background:var(--white);border-radius:var(--radius-lg);padding:1.8rem;border:1px solid var(--gray-200);transition:all .25s}
+.why-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);transform:translateY(-2px)}
+.why-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem}
+.why-icon-orange{background:var(--orange-light);color:var(--orange)}
+.why-icon-blue{background:var(--blue-light);color:var(--blue)}
+.why-icon-green{background:var(--green-light);color:var(--green)}
+.why-title{font-weight:700;font-size:1rem;margin-bottom:.4rem}
+.why-desc{font-size:.85rem;color:var(--gray-600);line-height:1.6}
+
+/* CONTRACTORS */
+.contractors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem}
+.contractor-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--gray-200);transition:all .25s}
+.contractor-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.1);transform:translateY(-3px)}
+.contractor-cover{height:100px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);position:relative}
+.contractor-avatar{width:72px;height:72px;border-radius:50%;border:3px solid var(--white);position:absolute;bottom:-36px;left:1.5rem;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--white)}
+.contractor-body{padding:2.8rem 1.5rem 1.5rem}
+.contractor-name{font-family:var(--font-display);font-weight:700;font-size:1.05rem;margin-bottom:.2rem}
+.contractor-role{font-size:.82rem;color:var(--gray-600);margin-bottom:.8rem}
+.contractor-meta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
+.meta-chip{display:flex;align-items:center;gap:5px;font-size:.78rem;color:var(--gray-600)}
+.chip-orange{color:var(--orange)}
+.contractor-card .btn{width:100%;justify-content:center;margin-top:.5rem}
+
+/* PROJECTS */
+#projects{background:var(--gray-50)}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.project-card{border-radius:var(--radius-lg);overflow:hidden;position:relative;aspect-ratio:4/3;cursor:pointer}
+.project-img{width:100%;height:100%;object-fit:cover;background:var(--gray-200);display:flex;align-items:center;justify-content:center;font-size:3rem}
+.project-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,24,39,.8) 0%,transparent 60%);opacity:0;transition:opacity .3s}
+.project-card:hover .project-overlay{opacity:1}
+.project-label{position:absolute;bottom:1rem;left:1rem;right:1rem;color:white;font-weight:700;font-size:.95rem;transform:translateY(8px);transition:transform .3s}
+.project-card:hover .project-label{transform:translateY(0)}
+.proj-bg-1{background:linear-gradient(135deg,#fde68a,#f59e0b)}
+.proj-bg-2{background:linear-gradient(135deg,#bbf7d0,#16a34a)}
+.proj-bg-3{background:linear-gradient(135deg,#bfdbfe,#3b82f6)}
+.proj-bg-4{background:linear-gradient(135deg,#fecaca,#ef4444)}
+.proj-bg-5{background:linear-gradient(135deg,#ddd6fe,#7c3aed)}
+.proj-bg-6{background:linear-gradient(135deg,#fed7aa,#f97316)}
+.proj-emoji{font-size:3.5rem}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem}
+.testi-card{background:var(--white);border-radius:var(--radius-lg);padding:1.8rem;border:1px solid var(--gray-200)}
+.testi-stars{color:var(--orange);font-size:1.1rem;margin-bottom:.8rem;letter-spacing:2px}
+.testi-text{font-size:.92rem;color:var(--gray-600);line-height:1.7;margin-bottom:1.2rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:10px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+.testi-name{font-weight:700;font-size:.9rem}
+.testi-loc{font-size:.78rem;color:var(--gray-400)}
+
+/* CTA REGISTER */
+#register{background:var(--navy);position:relative;overflow:hidden}
+#register::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(249,115,22,.08)}
+#register::after{content:'';position:absolute;bottom:-100px;left:-100px;width:300px;height:300px;border-radius:50%;background:rgba(37,99,235,.06)}
+.register-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}
+.register-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:var(--white);line-height:1.2;margin-bottom:1rem}
+.register-sub{color:rgba(255,255,255,.7);font-size:1rem;line-height:1.7;margin-bottom:2rem}
+.benefit-list{list-style:none;display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem}
+.benefit-list li{display:flex;align-items:center;gap:10px;font-size:.9rem;color:rgba(255,255,255,.85)}
+.benefit-list li::before{content:'✓';width:22px;height:22px;border-radius:50%;background:rgba(34,197,94,.2);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0}
+.register-form-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-xl);padding:2rem}
+.form-group{margin-bottom:1rem}
+.form-label{display:block;font-size:.83rem;color:rgba(255,255,255,.7);margin-bottom:.4rem;font-weight:500}
+.form-input{width:100%;padding:.75rem 1rem;border-radius:var(--radius);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:var(--white);font-family:var(--font-body);font-size:.9rem;outline:none;transition:border .2s}
+.form-input::placeholder{color:rgba(255,255,255,.35)}
+.form-input:focus{border-color:var(--orange)}
+.form-select{width:100%;padding:.75rem 1rem;border-radius:var(--radius);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-family:var(--font-body);font-size:.9rem;outline:none;cursor:pointer;appearance:none;-webkit-appearance:none}
+.form-select option{background:var(--navy);color:var(--white)}
+
+/* APP PREVIEW */
+#app{background:var(--gray-50)}
+.app-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.app-phones{display:flex;gap:1.5rem;justify-content:center}
+.phone-mockup{width:160px;background:var(--navy);border-radius:28px;padding:12px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.phone-screen{background:var(--white);border-radius:18px;overflow:hidden;aspect-ratio:9/19}
+.phone-screen-inner{height:100%;display:flex;flex-direction:column;font-size:.55rem}
+.phone-header{background:var(--orange);padding:10px 8px;color:white;font-weight:700;font-size:.6rem}
+.phone-content{padding:8px;flex:1}
+.phone-mini-card{background:var(--gray-50);border-radius:6px;padding:6px;margin-bottom:6px;font-size:.52rem}
+.phone-mini-card strong{color:var(--navy);display:block;margin-bottom:2px}
+.phone-mini-card span{color:var(--gray-400)}
+.coming-soon-badge{display:inline-flex;align-items:center;gap:8px;background:var(--orange-light);border:1.5px dashed var(--orange);color:var(--orange-dark);padding:.6rem 1.2rem;border-radius:50px;font-size:.85rem;font-weight:600;margin-bottom:1.5rem}
+.app-features{list-style:none;display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
+.app-features li{display:flex;align-items:flex-start;gap:12px}
+.app-feat-icon{width:40px;height:40px;border-radius:10px;background:var(--orange-light);color:var(--orange);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.app-feat-title{font-weight:600;font-size:.9rem;margin-bottom:.2rem}
+.app-feat-desc{font-size:.82rem;color:var(--gray-600)}
+
+/* FAQ */
+.faq-list{max-width:780px;margin:3rem auto 0;display:flex;flex-direction:column;gap:.75rem}
+.faq-item{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.3rem 1.5rem;cursor:pointer;font-weight:600;font-size:.95rem;color:var(--navy);transition:color .2s;user-select:none}
+.faq-q:hover{color:var(--orange)}
+.faq-arrow{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--gray-200);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--gray-400);transition:all .3s;flex-shrink:0}
+.faq-item.open .faq-arrow{background:var(--orange);border-color:var(--orange);color:var(--white);transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-a-inner{padding:0 1.5rem 1.3rem;font-size:.9rem;color:var(--gray-600);line-height:1.7}
+.faq-item.open .faq-a{max-height:200px}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,.8);padding:60px 5% 30px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand .logo{color:white;margin-bottom:1rem}
+.footer-brand p{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:280px}
+.footer-col h4{font-family:var(--font-display);font-weight:700;font-size:.9rem;color:var(--white);margin-bottom:1.2rem;letter-spacing:.03em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-col ul a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-col ul a:hover{color:var(--orange)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem}
+.footer-copy{font-size:.82rem;color:rgba(255,255,255,.35)}
+.social-icons{display:flex;gap:12px}
+.social-icon{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;transition:all .2s}
+.social-icon:hover{border-color:var(--orange);color:var(--orange)}
+
+/* PAGE VIEWS */
+.page{display:none}
+.page.active{display:block}
+#page-home{display:block}
+
+/* ABOUT PAGE */
+.about-hero{background:var(--navy);padding:100px 5% 80px;text-align:center}
+.about-hero h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);font-weight:800;color:var(--white);margin-bottom:1rem}
+.about-hero p{color:rgba(255,255,255,.7);font-size:1.1rem;max-width:600px;margin:0 auto}
+.timeline{position:relative;max-width:700px;margin:0 auto;padding-top:2rem}
+.timeline::before{content:'';position:absolute;left:24px;top:0;bottom:0;width:2px;background:var(--gray-200)}
+.timeline-item{display:flex;gap:1.5rem;margin-bottom:2.5rem;position:relative}
+.timeline-dot{width:48px;height:48px;border-radius:50%;background:var(--orange);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;flex-shrink:0;position:relative;z-index:1}
+.timeline-content{padding-top:.5rem}
+.timeline-year{font-size:.78rem;color:var(--orange);font-weight:700;letter-spacing:.08em;margin-bottom:.3rem}
+.timeline-title{font-weight:700;font-size:1rem;margin-bottom:.3rem}
+.timeline-desc{font-size:.88rem;color:var(--gray-600);line-height:1.6}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:3rem}
+.team-card{background:var(--white);border-radius:var(--radius-lg);padding:2rem;text-align:center;border:1px solid var(--gray-200)}
+.team-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:800;font-family:var(--font-display)}
+.team-name{font-weight:700;font-size:1rem;margin-bottom:.2rem}
+.team-role{font-size:.82rem;color:var(--orange);font-weight:600;margin-bottom:.5rem}
+.team-bio{font-size:.82rem;color:var(--gray-600)}
+
+/* LISTING PAGE */
+.listing-bar{background:var(--white);border-bottom:1px solid var(--gray-200);padding:1.2rem 5%;position:sticky;top:68px;z-index:50}
+.listing-filters{max-width:1200px;margin:0 auto;display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.filter-input{padding:.55rem 1rem;border-radius:50px;border:1.5px solid var(--gray-200);font-family:var(--font-body);font-size:.85rem;outline:none;transition:border .2s}
+.filter-input:focus{border-color:var(--orange)}
+.filter-select{padding:.55rem 1rem;border-radius:50px;border:1.5px solid var(--gray-200);font-family:var(--font-body);font-size:.85rem;outline:none;cursor:pointer;background:var(--white)}
+.listing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+
+/* DASHBOARD */
+.dash-layout{display:grid;grid-template-columns:240px 1fr;min-height:600px;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-xl);overflow:hidden}
+.dash-sidebar{background:var(--navy);padding:1.5rem 0;display:flex;flex-direction:column}
+.dash-logo{font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:var(--white);padding:.5rem 1.5rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.dash-nav{padding:1rem 0;flex:1}
+.dash-nav-item{display:flex;align-items:center;gap:10px;padding:.75rem 1.5rem;font-size:.88rem;color:rgba(255,255,255,.6);cursor:pointer;transition:all .2s;text-decoration:none}
+.dash-nav-item:hover,.dash-nav-item.active{background:rgba(249,115,22,.15);color:var(--orange)}
+.dash-nav-item span{font-size:1rem}
+.dash-content{padding:2rem;background:var(--gray-50)}
+.dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem}
+.dash-title{font-family:var(--font-display);font-size:1.4rem;font-weight:800}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+.stat-box{background:var(--white);border-radius:var(--radius-lg);padding:1.3rem;border:1px solid var(--gray-200)}
+.stat-box-label{font-size:.78rem;color:var(--gray-400);margin-bottom:.4rem;font-weight:500}
+.stat-box-val{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--navy)}
+.stat-box-change{font-size:.75rem;color:var(--green);margin-top:.2rem}
+
+/* POST REQUIREMENT */
+.post-req-steps{display:flex;gap:0;margin-bottom:2.5rem;background:var(--gray-50);border-radius:50px;padding:.3rem}
+.post-step-btn{flex:1;padding:.6rem 1rem;border-radius:50px;border:none;background:transparent;font-family:var(--font-body);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--gray-400)}
+.post-step-btn.active{background:var(--orange);color:var(--white)}
+.post-form-step{display:none}
+.post-form-step.active{display:block}
+.service-pick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.service-pick-btn{padding:1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);background:var(--white);font-family:var(--font-body);font-size:.85rem;cursor:pointer;transition:all .2s;text-align:center;font-weight:500}
+.service-pick-btn:hover,.service-pick-btn.selected{border-color:var(--orange);background:var(--orange-light);color:var(--orange-dark)}
+.range-input{width:100%;margin:.5rem 0}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:2rem}
+  .hero-visual{display:none}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps::before{display:none}
+  .register-inner{grid-template-columns:1fr}
+  .app-inner{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .trust-inner{grid-template-columns:1fr 1fr}
+  .projects-grid{grid-template-columns:1fr 1fr}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .dash-layout{grid-template-columns:1fr}
+  .dash-sidebar{display:none}
+  .stats-row{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  section{padding:60px 4%}
+  .steps{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .trust-inner{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:1fr 1fr}
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes counterUp{from{opacity:0}to{opacity:1}}
+.fade-up{animation:fadeUp .6s ease both}
+.delay-1{animation-delay:.1s}
+.delay-2{animation-delay:.2s}
+.delay-3{animation-delay:.3s}
+.delay-4{animation-delay:.4s}
+
+/* ACTIVE PAGE INDICATOR */
+.nav-links a.active-link{color:var(--orange);font-weight:600}
+
+/* BADGE/TAG */
+.badge{display:inline-block;padding:.25rem .7rem;border-radius:50px;font-size:.72rem;font-weight:600}
+.badge-green{background:var(--green-light);color:#15803d}
+.badge-orange{background:var(--orange-light);color:var(--orange-dark)}
+.badge-blue{background:var(--blue-light);color:#1d4ed8}
+
+/* SEARCH BAR */
+.search-bar{display:flex;gap:0;background:var(--white);border:2px solid var(--gray-200);border-radius:50px;overflow:hidden;margin-bottom:2rem;max-width:600px;transition:border .2s}
+.search-bar:focus-within{border-color:var(--orange)}
+.search-input{flex:1;padding:.85rem 1.2rem;border:none;outline:none;font-family:var(--font-body);font-size:.95rem}
+.search-btn{background:var(--orange);color:var(--white);border:none;padding:.85rem 1.5rem;font-family:var(--font-body);font-weight:600;cursor:pointer;font-size:.9rem;transition:background .2s}
+.search-btn:hover{background:var(--orange-dark)}
+
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--white);z-index:200;padding:2rem;flex-direction:column;gap:1.5rem}
+.mobile-menu.open{display:flex}
+.mobile-menu-close{align-self:flex-end;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--navy)}
+.mobile-menu a{font-size:1.2rem;font-weight:600;color:var(--navy);text-decoration:none;padding:.75rem 0;border-bottom:1px solid var(--gray-100)}
+</style>
+</head>
+<body>
+<h2 class="sr-only">Thekedaar – Platform connecting customers with verified local contractors and construction professionals in India</h2>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  <a href="#" onclick="showPage('home');closeMobileMenu()">Home</a>
+  <a href="#" onclick="showPage('about');closeMobileMenu()">About</a>
+  <a href="#" onclick="showPage('listing');closeMobileMenu()">Find Contractors</a>
+  <a href="#" onclick="showPage('post');closeMobileMenu()">Post Requirement</a>
+  <a href="#" onclick="showPage('dashboard');closeMobileMenu()">Dashboard</a>
+  <a href="#" class="btn btn-primary btn-lg" style="text-align:center" onclick="showPage('register-page');closeMobileMenu()">Register as Contractor</a>
+</div>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo" onclick="showPage('home')"><span class="logo-dot"></span>Thekedaar</a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('home')" id="nav-home" class="active-link">Home</a></li>
+      <li><a href="#" onclick="showPage('about')" id="nav-about">About</a></li>
+      <li><a href="#" onclick="showPage('listing')" id="nav-listing">Find Contractors</a></li>
+      <li><a href="#" onclick="showPage('post')" id="nav-post">Post Requirement</a></li>
+      <li><a href="#" onclick="showPage('dashboard')" id="nav-dash">Dashboard</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-outline" href="#" onclick="showPage('listing')">Find Workers</a>
+      <a class="btn btn-primary" href="#" onclick="showPage('register-page')">Become a Contractor</a>
+    </div>
+    <button class="hamburger" onclick="openMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ==================== HOME PAGE ==================== -->
+<div id="page-home" class="page active">
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="fade-up">
+      <div class="hero-badge"><span class="hero-badge-dot">🏗</span> India's #1 Contractor Platform</div>
+      <h1 class="hero-title">Find Trusted<br><span>Contractors</span><br>Near You</h1>
+      <p class="hero-sub">Connect with verified workers, contractors, plumbers, electricians, painters and construction experts within minutes.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary btn-lg" href="#" onclick="showPage('listing')">🔍 Find Workers</a>
+        <a class="btn btn-dark btn-lg" href="#" onclick="showPage('register-page')">Become a Contractor →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong id="c1">0</strong><span>Contractors</span></div>
+        <div class="hero-stat"><strong id="c2">0</strong><span>Cities</span></div>
+        <div class="hero-stat"><strong id="c3">0</strong><span>Projects Done</span></div>
+        <div class="hero-stat"><strong id="c4">0</strong><span>Avg Rating</span></div>
+      </div>
+    </div>
+    <div class="hero-visual fade-up delay-2">
+      <div class="hero-card-stack">
+        <div class="hero-main-card">
+          <div style="font-weight:700;font-size:.9rem;margin-bottom:1rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.05em;font-size:.75rem">Available Contractors</div>
+          <div class="hero-worker-row">
+            <div class="avatar av-orange">RS</div>
+            <div class="worker-info"><div class="worker-name">Rakesh Sharma</div><div class="worker-role">Civil Contractor</div></div>
+            <div><div class="worker-rating">⭐ 4.9</div><div style="font-size:.72rem;color:var(--gray-400)">Jaipur</div></div>
+          </div>
+          <div class="hero-worker-row">
+            <div class="avatar av-blue">MK</div>
+            <div class="worker-info"><div class="worker-name">Mahesh Kumar</div><div class="worker-role">Electrician</div></div>
+            <div><div class="worker-rating">⭐ 4.8</div><div style="font-size:.72rem;color:var(--gray-400)">Delhi</div></div>
+          </div>
+          <div class="hero-worker-row">
+            <div class="avatar av-green">PG</div>
+            <div class="worker-info"><div class="worker-name">Priya Gupta</div><div class="worker-role">Interior Designer</div></div>
+            <div><div class="worker-rating">⭐ 4.7</div><div style="font-size:.72rem;color:var(--gray-400)">Mumbai</div></div>
+          </div>
+          <div class="hero-worker-row">
+            <div class="avatar av-purple">AV</div>
+            <div class="worker-info"><div class="worker-name">Arun Verma</div><div class="worker-role">Plumber</div></div>
+            <div><div class="worker-rating">⭐ 4.6</div><div style="font-size:.72rem;color:var(--gray-400)">Pune</div></div>
+          </div>
+          <a href="#" onclick="showPage('listing')" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:1rem">View All Contractors →</a>
+        </div>
+        <div class="float-badge float-badge-1">✅ 25,000+ Projects Done</div>
+        <div class="float-badge float-badge-2">🏙 Available in 50+ Cities</div>
+        <div class="float-badge float-badge-3">⭐ 4.8 Avg Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div id="trust">
+  <div class="trust-inner container">
+    <div class="trust-item fade-up"><div class="trust-num">10,000+</div><div class="trust-label">Verified Contractors</div></div>
+    <div class="trust-item fade-up delay-1"><div class="trust-num">50+</div><div class="trust-label">Cities Covered</div></div>
+    <div class="trust-item fade-up delay-2"><div class="trust-num">25,000+</div><div class="trust-label">Projects Completed</div></div>
+    <div class="trust-item fade-up delay-3"><div class="trust-num">4.8 ★</div><div class="trust-label">Average Rating</div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag">Services</span>
+      <h2 class="section-title">All Services, One Platform</h2>
+      <p class="section-subtitle">From small repairs to large construction projects — find the right professional for every need.</p>
+    </div>
+    <div class="services-grid">
+      <a href="#" class="service-card fade-up" onclick="showPage('listing')"><div class="service-icon">🔧</div><div class="service-name">Plumbing</div></a>
+      <a href="#" class="service-card fade-up delay-1" onclick="showPage('listing')"><div class="service-icon">⚡</div><div class="service-name">Electrical</div></a>
+      <a href="#" class="service-card fade-up delay-2" onclick="showPage('listing')"><div class="service-icon">🪚</div><div class="service-name">Carpentry</div></a>
+      <a href="#" class="service-card fade-up delay-3" onclick="showPage('listing')"><div class="service-icon">🎨</div><div class="service-name">Painting</div></a>
+      <a href="#" class="service-card fade-up" onclick="showPage('listing')"><div class="service-icon">🧱</div><div class="service-name">Masonry</div></a>
+      <a href="#" class="service-card fade-up delay-1" onclick="showPage('listing')"><div class="service-icon">🛋</div><div class="service-name">Interior Design</div></a>
+      <a href="#" class="service-card fade-up delay-2" onclick="showPage('listing')"><div class="service-icon">🏠</div><div class="service-name">Renovation</div></a>
+      <a href="#" class="service-card fade-up delay-3" onclick="showPage('listing')"><div class="service-icon">⬛</div><div class="service-name">Flooring</div></a>
+      <a href="#" class="service-card fade-up" onclick="showPage('listing')"><div class="service-icon">🔩</div><div class="service-name">Welding</div></a>
+      <a href="#" class="service-card fade-up delay-1" onclick="showPage('listing')"><div class="service-icon">🏗</div><div class="service-name">Construction</div></a>
+      <a href="#" class="service-card fade-up delay-2" onclick="showPage('listing')"><div class="service-icon">⚙️</div><div class="service-name">Fabrication</div></a>
+      <a href="#" class="service-card fade-up delay-3" onclick="showPage('listing')"><div class="service-icon">👷</div><div class="service-name">Labour Supply</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag">Process</span>
+      <h2 class="section-title">How Thekedaar Works</h2>
+      <p class="section-subtitle">Get the right contractor in 4 simple steps — fast, transparent, and hassle-free.</p>
+    </div>
+    <div class="steps">
+      <div class="step fade-up"><div class="step-num">1</div><div class="step-title">Post Your Requirement</div><div class="step-desc">Describe your project, location, and budget in minutes.</div></div>
+      <div class="step fade-up delay-1"><div class="step-num">2</div><div class="step-title">Get Contractor Matches</div><div class="step-desc">Receive profiles of verified local contractors instantly.</div></div>
+      <div class="step fade-up delay-2"><div class="step-num">3</div><div class="step-title">Compare Quotes</div><div class="step-desc">Review quotes, ratings, and past work side-by-side.</div></div>
+      <div class="step fade-up delay-3"><div class="step-num">4</div><div class="step-title">Hire With Confidence</div><div class="step-desc">Book, pay securely, and track your project live.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THEKEDAAR -->
+<section id="why">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag">Why Us</span>
+      <h2 class="section-title">Why Choose Thekedaar?</h2>
+      <p class="section-subtitle">We set the highest standards for contractor quality, transparency, and customer experience.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon why-icon-orange">✅</div><div class="why-title">Verified Professionals</div><div class="why-desc">Every contractor undergoes thorough background verification before joining our platform.</div></div>
+      <div class="why-card"><div class="why-icon why-icon-blue">💰</div><div class="why-title">Transparent Pricing</div><div class="why-desc">No hidden charges. Get upfront quotes and compare before committing.</div></div>
+      <div class="why-card"><div class="why-icon why-icon-green">⭐</div><div class="why-title">Ratings & Reviews</div><div class="why-desc">Genuine reviews from real customers to help you make the right choice.</div></div>
+      <div class="why-card"><div class="why-icon why-icon-orange">⚡</div><div class="why-title">Quick Response</div><div class="why-desc">Connect with available contractors in your area within minutes.</div></div>
+      <div class="why-card"><div class="why-icon why-icon-blue">📍</div><div class="why-title">Local Availability</div><div class="why-desc">Find contractors who know your city, your locality, and your needs.</div></div>
+      <div class="why-card"><div class="why-icon why-icon-green">🔒</div><div class="why-title">Secure Payments</div><div class="why-desc">Safe, escrow-backed payments released only after work satisfaction.</div></div>
+      <div class="why-card"><div class="why-icon why-icon-orange">🏆</div><div class="why-title">Quality Assurance</div><div class="why-desc">Work quality guaranteed with structured inspection checkpoints.</div></div>
+      <div class="why-card"><div class="why-icon why-icon-blue">📊</div><div class="why-title">Quote Comparison</div><div class="why-desc">Get multiple quotes and make data-driven decisions on your projects.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED CONTRACTORS -->
+<section id="contractors">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem">
+      <div><span class="section-tag">Top Rated</span><h2 class="section-title" style="margin-bottom:0">Featured Contractors</h2></div>
+      <a href="#" class="btn btn-outline" onclick="showPage('listing')">View All →</a>
+    </div>
+    <div class="contractors-grid">
+      <div class="contractor-card"><div class="contractor-cover" style="background:linear-gradient(135deg,#1e3a5f,#2563eb)"><div class="contractor-avatar" style="background:var(--orange)">RS</div></div><div class="contractor-body"><div class="contractor-name">Rakesh Sharma</div><div class="contractor-role">Civil Contractor</div><div class="contractor-meta"><span class="meta-chip chip-orange">⭐ 4.9</span><span class="meta-chip">📍 Jaipur</span><span class="meta-chip">🏗 10 yrs</span></div><div style="font-size:.8rem;color:var(--gray-400)">256 Reviews</div><a href="#" class="btn btn-primary">📞 Contact</a></div></div>
+      <div class="contractor-card"><div class="contractor-cover" style="background:linear-gradient(135deg,#14532d,#16a34a)"><div class="contractor-avatar" style="background:var(--blue)">MK</div></div><div class="contractor-body"><div class="contractor-name">Mahesh Kumar</div><div class="contractor-role">Master Electrician</div><div class="contractor-meta"><span class="meta-chip chip-orange">⭐ 4.8</span><span class="meta-chip">📍 Delhi</span><span class="meta-chip">⚡ 8 yrs</span></div><div style="font-size:.8rem;color:var(--gray-400)">189 Reviews</div><a href="#" class="btn btn-primary">📞 Contact</a></div></div>
+      <div class="contractor-card"><div class="contractor-cover" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)"><div class="contractor-avatar" style="background:var(--green)">PG</div></div><div class="contractor-body"><div class="contractor-name">Priya Gupta</div><div class="contractor-role">Interior Designer</div><div class="contractor-meta"><span class="meta-chip chip-orange">⭐ 4.9</span><span class="meta-chip">📍 Mumbai</span><span class="meta-chip">🛋 12 yrs</span></div><div style="font-size:.8rem;color:var(--gray-400)">312 Reviews</div><a href="#" class="btn btn-primary">📞 Contact</a></div></div>
+      <div class="contractor-card"><div class="contractor-cover" style="background:linear-gradient(135deg,#7c2d12,#f97316)"><div class="contractor-avatar" style="background:#7c3aed">AV</div></div><div class="contractor-body"><div class="contractor-name">Arun Verma</div><div class="contractor-role">Plumbing Expert</div><div class="contractor-meta"><span class="meta-chip chip-orange">⭐ 4.7</span><span class="meta-chip">📍 Pune</span><span class="meta-chip">🔧 6 yrs</span></div><div style="font-size:.8rem;color:var(--gray-400)">143 Reviews</div><a href="#" class="btn btn-primary">📞 Contact</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag">Portfolio</span>
+      <h2 class="section-title">Project Showcase</h2>
+      <p class="section-subtitle">Real work by verified contractors — quality you can see.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card"><div class="project-img proj-bg-1" style="display:flex;align-items:center;justify-content:center"><span class="proj-emoji">🏠</span></div><div class="project-overlay"></div><div class="project-label">Home Construction · Jaipur</div></div>
+      <div class="project-card"><div class="project-img proj-bg-2" style="display:flex;align-items:center;justify-content:center"><span class="proj-emoji">🛋</span></div><div class="project-overlay"></div><div class="project-label">Interior Design · Delhi</div></div>
+      <div class="project-card"><div class="project-img proj-bg-3" style="display:flex;align-items:center;justify-content:center"><span class="proj-emoji">🍳</span></div><div class="project-overlay"></div><div class="project-label">Modular Kitchen · Mumbai</div></div>
+      <div class="project-card"><div class="project-img proj-bg-4" style="display:flex;align-items:center;justify-content:center"><span class="proj-emoji">🚿</span></div><div class="project-overlay"></div><div class="project-label">Bathroom Renovation · Bengaluru</div></div>
+      <div class="project-card"><div class="project-img proj-bg-5" style="display:flex;align-items:center;justify-content:center"><span class="proj-emoji">🎨</span></div><div class="project-overlay"></div><div class="project-label">Full Home Painting · Hyderabad</div></div>
+      <div class="project-card"><div class="project-img proj-bg-6" style="display:flex;align-items:center;justify-content:center"><span class="proj-emoji">⬛</span></div><div class="project-overlay"></div><div class="project-label">Tile & Flooring · Chennai</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--gray-50)">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag">Reviews</span>
+      <h2 class="section-title">What Customers Say</h2>
+      <p class="section-subtitle">Real experiences from homeowners and businesses across India.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card fade-up"><div class="testi-stars">★★★★★</div><div class="testi-text">"Found an amazing civil contractor for my 3BHK through Thekedaar. The quality was outstanding and delivered on time. Highly recommend to anyone building in Jaipur!"</div><div class="testi-author"><div class="testi-avatar av-orange">SK</div><div><div class="testi-name">Suresh Khandelwal</div><div class="testi-loc">📍 Jaipur, Rajasthan</div></div></div></div>
+      <div class="testi-card fade-up delay-1"><div class="testi-stars">★★★★★</div><div class="testi-text">"The electrician from Thekedaar was verified and professional. Fixed our entire wiring issue in one visit. The rating system really helps you trust the service."</div><div class="testi-author"><div class="testi-avatar av-blue">NM</div><div><div class="testi-name">Neha Mehta</div><div class="testi-loc">📍 Delhi NCR</div></div></div></div>
+      <div class="testi-card fade-up delay-2"><div class="testi-stars">★★★★☆</div><div class="testi-text">"Used Thekedaar for interior design work and got 4 quotes instantly. The comparison feature helped me save ₹50,000. Brilliant platform for homeowners!"</div><div class="testi-author"><div class="testi-avatar av-green">RP</div><div><div class="testi-name">Rahul Patel</div><div class="testi-loc">📍 Ahmedabad, Gujarat</div></div></div></div>
+      <div class="testi-card fade-up"><div class="testi-stars">★★★★★</div><div class="testi-text">"As a property developer, I regularly hire from Thekedaar. The contractor profiles are detailed and the background verification gives genuine peace of mind."</div><div class="testi-author"><div class="testi-avatar av-purple">AS</div><div><div class="testi-name">Anita Singh</div><div class="testi-loc">📍 Noida, UP</div></div></div></div>
+      <div class="testi-card fade-up delay-1"><div class="testi-stars">★★★★★</div><div class="testi-text">"Got my entire flat painted in 3 days. The painter was punctual, clean, and professional. Thekedaar has genuinely disrupted how we hire contractors in India."</div><div class="testi-author"><div class="testi-avatar av-orange">VR</div><div><div class="testi-name">Vijay Reddy</div><div class="testi-loc">📍 Hyderabad, Telangana</div></div></div></div>
+      <div class="testi-card fade-up delay-2"><div class="testi-stars">★★★★★</div><div class="testi-text">"The plumber arrived within 2 hours of posting my requirement. Fixed the pipeline issue quickly. Thekedaar is like Uber for contractors — exactly what India needed!"</div><div class="testi-author"><div class="testi-avatar av-blue">DK</div><div><div class="testi-name">Deepa Kumar</div><div class="testi-loc">📍 Bengaluru, Karnataka</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTRACTOR REGISTER CTA -->
+<section id="register">
+  <div class="register-inner">
+    <div>
+      <span class="section-tag" style="background:rgba(249,115,22,.15);color:var(--orange)">For Contractors</span>
+      <h2 class="register-title">Grow Your Business<br>With Thekedaar</h2>
+      <p class="register-sub">Join 10,000+ verified professionals who are getting more leads, more visibility, and more customers through India's fastest-growing contractor platform.</p>
+      <ul class="benefit-list">
+        <li>Get 5–10 qualified leads every week</li>
+        <li>Build a verified professional profile</li>
+        <li>Reach customers across your city</li>
+        <li>Secure, on-time payments guaranteed</li>
+        <li>Free to register, pay only per lead</li>
+      </ul>
+      <a class="btn btn-primary btn-lg" href="#" onclick="showPage('register-page')">Register Now — It's Free →</a>
+    </div>
+    <div class="register-form-box">
+      <div style="font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--white);margin-bottom:1.5rem">Quick Registration</div>
+      <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" placeholder="Rakesh Sharma"/></div>
+      <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" type="tel" placeholder="+91 98765 43210"/></div>
+      <div class="form-group"><label class="form-label">Service Category</label>
+        <select class="form-select">
+          <option>Select your specialty</option>
+          <option>Civil Contractor</option><option>Plumber</option><option>Electrician</option><option>Painter</option><option>Carpenter</option><option>Interior Designer</option><option>Labour Contractor</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">City</label><input class="form-input" type="text" placeholder="Jaipur, Delhi, Mumbai..."/></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;padding:1rem;font-size:1rem;border-radius:var(--radius);margin-top:.5rem" onclick="alert('🎉 Registration submitted! Our team will contact you within 24 hours.')">Submit Application</button>
+    </div>
+  </div>
+</section>
+
+<!-- APP PREVIEW -->
+<section id="app">
+  <div class="app-inner container">
+    <div>
+      <div class="coming-soon-badge">📱 Coming Soon</div>
+      <h2 class="section-title">Manage Everything<br>From Your Phone</h2>
+      <p class="section-subtitle" style="margin-bottom:0">The Thekedaar app is coming soon with powerful features for both customers and contractors.</p>
+      <ul class="app-features">
+        <li><div class="app-feat-icon">⚡</div><div><div class="app-feat-title">Instant Booking</div><div class="app-feat-desc">Book verified contractors with one tap, anytime.</div></div></li>
+        <li><div class="app-feat-icon">📡</div><div><div class="app-feat-title">Live Tracking</div><div class="app-feat-desc">Track contractor arrival and project progress in real time.</div></div></li>
+        <li><div class="app-feat-icon">💬</div><div><div class="app-feat-title">In-App Chat</div><div class="app-feat-desc">Discuss project details directly with your contractor.</div></div></li>
+        <li><div class="app-feat-icon">📋</div><div><div class="app-feat-title">Quote Comparison</div><div class="app-feat-desc">Compare multiple quotes side-by-side before deciding.</div></div></li>
+      </ul>
+    </div>
+    <div class="app-phones">
+      <div class="phone-mockup" style="margin-top:2rem">
+        <div class="phone-screen">
+          <div class="phone-screen-inner">
+            <div class="phone-header">🏗 Thekedaar</div>
+            <div class="phone-content">
+              <div style="font-size:.6rem;font-weight:700;margin-bottom:6px;color:var(--gray-400)">NEARBY</div>
+              <div class="phone-mini-card"><strong>Rakesh Sharma</strong><span>Civil · ⭐4.9 · Jaipur</span></div>
+              <div class="phone-mini-card"><strong>Mahesh Kumar</strong><span>Electrical · ⭐4.8 · Delhi</span></div>
+              <div class="phone-mini-card"><strong>Arun Verma</strong><span>Plumbing · ⭐4.7 · Pune</span></div>
+              <div style="background:var(--orange);color:white;text-align:center;padding:6px;border-radius:6px;font-size:.58rem;font-weight:700;margin-top:8px">Book Now</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <div class="phone-screen-inner">
+            <div class="phone-header" style="background:var(--navy)">My Projects</div>
+            <div class="phone-content">
+              <div style="font-size:.6rem;font-weight:700;margin-bottom:6px;color:var(--orange)">ACTIVE</div>
+              <div class="phone-mini-card" style="border-left:3px solid var(--green)"><strong>Home Renovation</strong><span>In Progress · 60%</span></div>
+              <div style="font-size:.6rem;font-weight:700;margin:.6rem 0 6px;color:var(--gray-400)">QUOTES</div>
+              <div class="phone-mini-card"><strong>Kitchen Tiles</strong><span>3 quotes received</span></div>
+              <div style="background:var(--blue);color:white;text-align:center;padding:6px;border-radius:6px;font-size:.58rem;font-weight:700;margin-top:8px">View Details</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--gray-50)">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag">FAQ</span>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>How does Thekedaar work?</span><div class="faq-arrow">▾</div></div><div class="faq-a"><div class="faq-a-inner">Post your requirement with project details and location. Our system instantly matches you with verified local contractors. You receive multiple quotes, compare them, and hire the best fit — all within minutes.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>How are contractors verified?</span><div class="faq-arrow">▾</div></div><div class="faq-a"><div class="faq-a-inner">Every contractor undergoes a 3-step verification: identity verification (Aadhaar/PAN), background check, and skills assessment. Only contractors who pass all three are listed on Thekedaar.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Is there any service charge for customers?</span><div class="faq-arrow">▾</div></div><div class="faq-a"><div class="faq-a-inner">Thekedaar is completely free for customers. Post requirements, get quotes, and hire — all at no cost. Contractors pay a small subscription or per-lead fee.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Can I compare multiple quotes?</span><div class="faq-arrow">▾</div></div><div class="faq-a"><div class="faq-a-inner">Yes! When you post a requirement, up to 5 contractors can submit quotes. You can compare them side-by-side based on price, timeline, rating, and experience before deciding.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>How do payments work?</span><div class="faq-arrow">▾</div></div><div class="faq-a"><div class="faq-a-inner">Payments go through our secure escrow system. Funds are held safely and released to the contractor only after you confirm completion and satisfaction. Multiple payment methods supported.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Can contractors register for free?</span><div class="faq-arrow">▾</div></div><div class="faq-a"><div class="faq-a-inner">Yes, registration is completely free! Contractors can create their verified profile at no cost. There's a small fee only when you receive and accept leads from customers.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:1rem">🏗 Thekedaar</div>
+        <p>India's most trusted platform to find verified contractors, workers, and construction professionals near you.</p>
+      </div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#" onclick="showPage('about')">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="#" onclick="showPage('listing')">Construction</a></li><li><a href="#" onclick="showPage('listing')">Plumbing</a></li><li><a href="#" onclick="showPage('listing')">Electrical</a></li><li><a href="#" onclick="showPage('listing')">Painting</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 Thekedaar. All rights reserved. Made with ❤️ in India.</div>
+      <div class="social-icons">
+        <a class="social-icon" href="#" aria-label="LinkedIn">in</a>
+        <a class="social-icon" href="#" aria-label="Instagram">📸</a>
+        <a class="social-icon" href="#" aria-label="Facebook">f</a>
+        <a class="social-icon" href="#" aria-label="Twitter">𝕏</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div><!-- END HOME PAGE -->
+
+<!-- ==================== ABOUT PAGE ==================== -->
+<div id="page-about" class="page">
+  <div class="about-hero" style="padding-top:120px">
+    <span class="section-tag" style="background:rgba(249,115,22,.15);color:var(--orange)">Our Story</span>
+    <h1>Built for Bharat's<br>Builders</h1>
+    <p>We started Thekedaar because finding a trustworthy contractor in India felt impossible. We're fixing that.</p>
+  </div>
+  <section>
+    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+      <div>
+        <span class="section-tag">Mission</span>
+        <h2 class="section-title">Empowering Every Builder</h2>
+        <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1rem">Thekedaar was born from a simple frustration: finding reliable contractors in India was a nightmare. No transparency, no accountability, no trust.</p>
+        <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1rem">Our mission is to digitize India's ₹14 lakh crore construction industry — making it transparent, trustworthy, and accessible for both customers and contractors.</p>
+        <p style="color:var(--gray-600);line-height:1.8">We believe every homeowner deserves quality work, and every skilled contractor deserves steady work and fair pay.</p>
+      </div>
+      <div style="background:var(--gray-50);border-radius:var(--radius-xl);padding:2.5rem">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+          <div style="text-align:center"><div style="font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--orange)">₹14L Cr</div><div style="font-size:.85rem;color:var(--gray-600)">Market Opportunity</div></div>
+          <div style="text-align:center"><div style="font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--blue)">50M+</div><div style="font-size:.85rem;color:var(--gray-600)">Skilled Workers in India</div></div>
+          <div style="text-align:center"><div style="font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--green)">2024</div><div style="font-size:.85rem;color:var(--gray-600)">Founded in Jaipur</div></div>
+          <div style="text-align:center"><div style="font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--orange)">50+</div><div style="font-size:.85rem;color:var(--gray-600)">Cities at Launch</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--gray-50)">
+    <div class="container">
+      <div class="text-center"><span class="section-tag">Journey</span><h2 class="section-title">Our Timeline</h2></div>
+      <div class="timeline" style="margin-top:3rem">
+        <div class="timeline-item"><div class="timeline-dot">🌱</div><div class="timeline-content"><div class="timeline-year">JAN 2024</div><div class="timeline-title">Idea Born</div><div class="timeline-desc">Founders struggled finding reliable contractors for their own home renovation in Jaipur — and decided to solve it.</div></div></div>
+        <div class="timeline-item"><div class="timeline-dot">🔨</div><div class="timeline-content"><div class="timeline-year">APR 2024</div><div class="timeline-title">MVP Built</div><div class="timeline-desc">First version launched in Jaipur with 50 verified contractors. 200 bookings in first month.</div></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📈</div><div class="timeline-content"><div class="timeline-year">AUG 2024</div><div class="timeline-title">Seed Funding</div><div class="timeline-desc">Raised ₹3 crore seed round. Expanded to 5 cities: Delhi, Mumbai, Bengaluru, Pune, Hyderabad.</div></div></div>
+        <div class="timeline-item"><div class="timeline-dot">🚀</div><div class="timeline-content"><div class="timeline-year">2025</div><div class="timeline-title">Scale Up</div><div class="timeline-desc">10,000+ contractors, 50+ cities, 25,000+ projects. Mobile app launch planned.</div></div></div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="text-center"><span class="section-tag">Team</span><h2 class="section-title">The Builders Behind Thekedaar</h2></div>
+      <div class="team-grid">
+        <div class="team-card"><div class="team-avatar av-orange">AJ</div><div class="team-name">Arjun Joshi</div><div class="team-role">CEO & Co-Founder</div><div class="team-bio">Ex-Ola, IIT Bombay. Passionate about digitizing India's skilled workforce.</div></div>
+        <div class="team-card"><div class="team-avatar av-blue">PS</div><div class="team-name">Pooja Singh</div><div class="team-role">CTO & Co-Founder</div><div class="team-bio">Ex-Flipkart engineer. Builds scalable systems for India's next billion users.</div></div>
+        <div class="team-card"><div class="team-avatar av-green">RG</div><div class="team-name">Rohit Gupta</div><div class="team-role">VP Growth</div><div class="team-bio">Ex-Urban Company. Expert in hyperlocal service marketplace growth.</div></div>
+        <div class="team-card"><div class="team-avatar av-purple">NV</div><div class="team-name">Neha Verma</div><div class="team-role">VP Operations</div><div class="team-bio">Built contractor verification systems at scale. Former NoBroker.</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== LISTING PAGE ==================== -->
+<div id="page-listing" class="page">
+  <div style="padding-top:68px;background:var(--navy);padding:100px 5% 60px">
+    <div class="container">
+      <h1 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;color:white;margin-bottom:1rem">Find Contractors Near You</h1>
+      <p style="color:rgba(255,255,255,.7);margin-bottom:1.5rem">Search from 10,000+ verified professionals across 50+ cities</p>
+      <div class="search-bar" style="max-width:600px"><input class="search-input" type="text" placeholder="Search contractors, services, or city..."/><button class="search-btn">Search</button></div>
+    </div>
+  </div>
+  <div class="listing-bar">
+    <div class="listing-filters">
+      <select class="filter-select"><option>All Cities</option><option>Jaipur</option><option>Delhi</option><option>Mumbai</option><option>Bengaluru</option><option>Pune</option><option>Hyderabad</option><option>Chennai</option></select>
+      <select class="filter-select"><option>All Services</option><option>Civil Contractor</option><option>Plumber</option><option>Electrician</option><option>Painter</option><option>Carpenter</option><option>Interior Designer</option><option>Labour</option></select>
+      <select class="filter-select"><option>Any Rating</option><option>4.5+</option><option>4.0+</option><option>3.5+</option></select>
+      <select class="filter-select"><option>Any Experience</option><option>1-3 Years</option><option>3-5 Years</option><option>5+ Years</option><option>10+ Years</option></select>
+      <select class="filter-select"><option>Availability</option><option>Available Today</option><option>This Week</option></select>
+    </div>
+  </div>
+  <section style="padding-top:2rem">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+        <div style="color:var(--gray-600);font-size:.9rem">Showing <strong>128 contractors</strong> in your area</div>
+        <select class="filter-select">
+          <option>Sort: Best Match</option><option>Sort: Highest Rated</option><option>Sort: Most Reviews</option><option>Sort: Most Experience</option>
+        </select>
+      </div>
+      <div class="listing-grid">
+        <div class="contractor-card"><div class="contractor-cover" style="background:linear-gradient(135deg,#1e3a5f,#2563eb)"><div class="contractor-avatar" style="background:var(--orange)">RS</div></div><div class="contractor-body"><span class="badge badge-green" style="margin-bottom:.5rem">Available Today</span><div class="contractor-name">Rakesh Sharma</div><div class="contractor-role">Civil Contractor</div><div class="contractor-meta"><span class="meta-chip chip-orange">⭐ 4.9</span><span class="meta-chip">📍 Jaipur</span><span class="meta-chip">10 yrs</span></div><div style="font-size:.8rem;color:var(--gray-400);margin-bottom:1rem">256 Reviews · ₹800–1,200/day</div><a href="#" class="btn btn-primary" style="width:100%;justify-content:center">View Profile</a></div></div>
+        <div class="contractor-card"><div class="contractor-cover" style="background:linear-gradient(135deg,#14532d,#16a34a)"><div class="contractor-avatar" style="background:var(--blue)">MK</div></div><div class="contractor-body"><span class="badge badge-orange" style="margin-bottom:.5rem">Top Rated</span><div class="contractor-name">Mahesh Kumar</div><div class="contractor-role">Master Electrician</div><div class="contractor-meta"><span class="meta-chip chip-orange">⭐ 4.8</span><span class="meta-chip">📍 Delhi</span><span class="meta-chip">8 yrs</span></div><div style="font-size:.8rem;color:var(--gray-400);margin-bottom:1rem">189 Reviews · ₹600–900/day</div><a href="#" class="btn btn-primary" style="width:100%;justify-content:center">View Profile</a></div></div>
+        <div class="contractor-card"><div class="contractor-cover" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)"><div class="contractor-avatar" style="background:var(--green)">PG</div></div><div class="contractor-body"><span class="badge badge-blue" style="margin-bottom:.5rem">Verified Pro</span><div class="contractor-name">Priya Gupta</div><div class="contractor-role">Interior Designer</div><div class="contractor-meta"><span class="meta-chip chip-orange">⭐ 4.9</span><span class="meta-chip">📍 Mumbai</span><span class="meta-chip">12 yrs</span></div><div style="font-size:.8rem;color:var(--gray-400);margin-bottom:1rem">312 Reviews · ₹2,000–5,000/day</div><a href="#" class="btn btn-primary" style="width:100%;justify-content:center">View Profile</a></div></div>
+        <div class="contractor-card"><div class="contractor-cover" style="background:linear-gradient(135deg,#7c2d12,#f97316)"><div class="contractor-avatar" style="background:#7c3aed">AV</div></div><div class="contractor-body"><span class="badge badge-green" style="margin-bottom:.5rem">Available Today</span><div class="contractor-name">Arun Verma</div><div class="contractor-role">Plumbing Expert</div><div class="contractor-meta"><span class="meta-chip chip-orange">⭐ 4.7</span><span class="meta-chip">📍 Pune</span><span class="meta-chip">6 yrs</span></div><div style="font-size:.8rem;color:var(--gray-400);margin-bottom:1rem">143 Reviews · ₹500–800/day</div><a href="#" class="btn btn-primary" style="width:100%;justify-content:center">View Profile</a></div></div>
+        <div class="contractor-card"><div class="contractor-cover" style="background:linear-gradient(135deg,#065f46,#10b981)"><div class="contractor-avatar av-orange">SK</div></div><div class="contractor-body"><span class="badge badge-orange" style="margin-bottom:.5rem">Top Rated</span><div class="contractor-name">Sunil Kapoor</div><div class="contractor-role">Painting Specialist</div><div class="contractor-meta"><span class="meta-chip chip-orange">⭐ 4.6</span><span class="meta-chip">📍 Bengaluru</span><span class="meta-chip">9 yrs</span></div><div style="font-size:.8rem;color:var(--gray-400);margin-bottom:1rem">98 Reviews · ₹400–700/day</div><a href="#" class="btn btn-primary" style="width:100%;justify-content:center">View Profile</a></div></div>
+        <div class="contractor-card"><div class="contractor-cover" style="background:linear-gradient(135deg,#1e1b4b,#4338ca)"><div class="contractor-avatar av-blue">DT</div></div><div class="contractor-body"><span class="badge badge-blue" style="margin-bottom:.5rem">Verified Pro</span><div class="contractor-name">Dinesh Tiwari</div><div class="contractor-role">Mason & Tile Expert</div><div class="contractor-meta"><span class="meta-chip chip-orange">⭐ 4.8</span><span class="meta-chip">📍 Jaipur</span><span class="meta-chip">15 yrs</span></div><div style="font-size:.8rem;color:var(--gray-400);margin-bottom:1rem">201 Reviews · ₹700–1,000/day</div><a href="#" class="btn btn-primary" style="width:100%;justify-content:center">View Profile</a></div></div>
+      </div>
+      <div style="display:flex;justify-content:center;gap:.5rem;margin-top:2.5rem">
+        <button class="btn btn-primary" style="min-width:40px">1</button>
+        <button class="btn btn-outline" style="min-width:40px">2</button>
+        <button class="btn btn-outline" style="min-width:40px">3</button>
+        <button class="btn btn-outline" style="min-width:40px">→</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== POST REQUIREMENT PAGE ==================== -->
+<div id="page-post" class="page">
+  <div style="padding-top:100px;padding-bottom:40px;background:var(--gray-50)">
+    <div class="container" style="max-width:700px">
+      <span class="section-tag">Get Quotes</span>
+      <h1 class="section-title">Post Your Requirement</h1>
+      <p class="section-subtitle">Tell us what you need and get matched with verified contractors instantly.</p>
+      <div style="background:var(--white);border-radius:var(--radius-xl);padding:2.5rem;border:1px solid var(--gray-200);margin-top:2rem">
+        <div class="post-req-steps" id="postSteps">
+          <button class="post-step-btn active" onclick="setPostStep(0)">Service</button>
+          <button class="post-step-btn" onclick="setPostStep(1)">Details</button>
+          <button class="post-step-btn" onclick="setPostStep(2)">Budget</button>
+          <button class="post-step-btn" onclick="setPostStep(3)">Location</button>
+          <button class="post-step-btn" onclick="setPostStep(4)">Contact</button>
+        </div>
+        <div class="post-form-step active" id="post-step-0">
+          <h3 style="font-family:var(--font-display);font-weight:700;margin-bottom:1.2rem">Select Service Type</h3>
+          <div class="service-pick-grid" id="servicePicker">
+            <button class="service-pick-btn" onclick="selectService(this)">🔧 Plumbing</button>
+            <button class="service-pick-btn" onclick="selectService(this)">⚡ Electrical</button>
+            <button class="service-pick-btn" onclick="selectService(this)">🪚 Carpentry</button>
+            <button class="service-pick-btn" onclick="selectService(this)">🎨 Painting</button>
+            <button class="service-pick-btn" onclick="selectService(this)">🧱 Masonry</button>
+            <button class="service-pick-btn" onclick="selectService(this)">🛋 Interior Design</button>
+            <button class="service-pick-btn" onclick="selectService(this)">🏠 Renovation</button>
+            <button class="service-pick-btn" onclick="selectService(this)">⬛ Flooring</button>
+            <button class="service-pick-btn" onclick="selectService(this)">🏗 Construction</button>
+          </div>
+          <button class="btn btn-primary" style="margin-top:1.5rem" onclick="setPostStep(1)">Next →</button>
+        </div>
+        <div class="post-form-step" id="post-step-1">
+          <h3 style="font-family:var(--font-display);font-weight:700;margin-bottom:1.2rem">Project Details</h3>
+          <div class="form-group"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--navy)">Project Title</label><input type="text" style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none" placeholder="e.g. Fix bathroom plumbing leak"/></div>
+          <div class="form-group"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--navy)">Description</label><textarea style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none;resize:vertical;min-height:100px" placeholder="Describe your requirement in detail..."></textarea></div>
+          <div style="display:flex;gap:1rem">
+            <button class="btn btn-outline" onclick="setPostStep(0)">← Back</button>
+            <button class="btn btn-primary" onclick="setPostStep(2)">Next →</button>
+          </div>
+        </div>
+        <div class="post-form-step" id="post-step-2">
+          <h3 style="font-family:var(--font-display);font-weight:700;margin-bottom:1.2rem">Your Budget</h3>
+          <div style="margin-bottom:1.5rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:.5rem"><span style="font-size:.85rem;font-weight:600">Budget Range</span><span style="font-size:.85rem;color:var(--orange);font-weight:700" id="budgetDisplay">₹10,000 – ₹50,000</span></div>
+            <input type="range" min="5000" max="500000" step="5000" value="50000" style="width:100%" oninput="updateBudget(this.value)" class="range-input"/>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin-bottom:1.5rem">
+            <button class="service-pick-btn" onclick="selectService(this)">Under ₹10K</button>
+            <button class="service-pick-btn" onclick="selectService(this)">₹10K–₹50K</button>
+            <button class="service-pick-btn" onclick="selectService(this)">₹50K–₹2L</button>
+            <button class="service-pick-btn" onclick="selectService(this)">₹2L–₹10L</button>
+            <button class="service-pick-btn" onclick="selectService(this)">₹10L–₹50L</button>
+            <button class="service-pick-btn" onclick="selectService(this)">₹50L+</button>
+          </div>
+          <div style="display:flex;gap:1rem">
+            <button class="btn btn-outline" onclick="setPostStep(1)">← Back</button>
+            <button class="btn btn-primary" onclick="setPostStep(3)">Next →</button>
+          </div>
+        </div>
+        <div class="post-form-step" id="post-step-3">
+          <h3 style="font-family:var(--font-display);font-weight:700;margin-bottom:1.2rem">Project Location</h3>
+          <div class="form-group"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--navy)">City</label><select style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none"><option>Select City</option><option>Jaipur</option><option>Delhi</option><option>Mumbai</option><option>Bengaluru</option><option>Pune</option><option>Hyderabad</option><option>Chennai</option><option>Ahmedabad</option></select></div>
+          <div class="form-group"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--navy)">Area / Locality</label><input type="text" style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none" placeholder="e.g. Malviya Nagar, Vaishali Nagar"/></div>
+          <div class="form-group"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--navy)">Pincode</label><input type="text" style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none" placeholder="302017"/></div>
+          <div style="display:flex;gap:1rem">
+            <button class="btn btn-outline" onclick="setPostStep(2)">← Back</button>
+            <button class="btn btn-primary" onclick="setPostStep(4)">Next →</button>
+          </div>
+        </div>
+        <div class="post-form-step" id="post-step-4">
+          <h3 style="font-family:var(--font-display);font-weight:700;margin-bottom:1.2rem">Your Contact Details</h3>
+          <div class="form-group"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--navy)">Full Name</label><input type="text" style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none" placeholder="Your name"/></div>
+          <div class="form-group"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--navy)">Phone Number</label><input type="tel" style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none" placeholder="+91 98765 43210"/></div>
+          <div class="form-group"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--navy)">Email (Optional)</label><input type="email" style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none" placeholder="you@email.com"/></div>
+          <div style="display:flex;gap:1rem">
+            <button class="btn btn-outline" onclick="setPostStep(3)">← Back</button>
+            <button class="btn btn-primary btn-lg" onclick="submitRequirement()">🚀 Post Requirement</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CONTRACTOR DASHBOARD ==================== -->
+<div id="page-dashboard" class="page">
+  <div style="padding-top:68px">
+    <div class="dash-layout" style="margin:2rem 5%;border-radius:var(--radius-xl);overflow:hidden">
+      <div class="dash-sidebar">
+        <div class="dash-logo">🏗 Thekedaar</div>
+        <nav class="dash-nav">
+          <a class="dash-nav-item active" href="#"><span>📊</span> Dashboard</a>
+          <a class="dash-nav-item" href="#"><span>📋</span> Leads</a>
+          <a class="dash-nav-item" href="#"><span>🏗</span> Projects</a>
+          <a class="dash-nav-item" href="#"><span>💬</span> Messages</a>
+          <a class="dash-nav-item" href="#"><span>⭐</span> Reviews</a>
+          <a class="dash-nav-item" href="#"><span>👤</span> Profile</a>
+          <a class="dash-nav-item" href="#"><span>⚙️</span> Settings</a>
+        </nav>
+        <div style="padding:1rem 1.5rem;border-top:1px solid rgba(255,255,255,.08)">
+          <div style="display:flex;align-items:center;gap:10px"><div class="avatar av-orange" style="width:36px;height:36px;font-size:.8rem">RS</div><div><div style="font-size:.82rem;font-weight:600;color:white">Rakesh Sharma</div><div style="font-size:.72rem;color:rgba(255,255,255,.4)">Civil Contractor</div></div></div>
+        </div>
+      </div>
+      <div class="dash-content">
+        <div class="dash-header"><div class="dash-title">Dashboard Overview</div><button class="btn btn-primary" onclick="showPage('post')">+ New Lead</button></div>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-box-label">New Leads</div><div class="stat-box-val">12</div><div class="stat-box-change">↑ 3 this week</div></div>
+          <div class="stat-box"><div class="stat-box-label">Active Projects</div><div class="stat-box-val">4</div><div class="stat-box-change">↑ 1 new</div></div>
+          <div class="stat-box"><div class="stat-box-label">This Month (₹)</div><div class="stat-box-val">42K</div><div class="stat-box-change">↑ 18% vs last</div></div>
+          <div class="stat-box"><div class="stat-box-label">Avg Rating</div><div class="stat-box-val">4.9</div><div class="stat-box-change">256 reviews</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+          <div style="background:var(--white);border-radius:var(--radius-lg);padding:1.5rem;border:1px solid var(--gray-200)">
+            <div style="font-weight:700;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center"><span>Recent Leads</span><span class="badge badge-orange">12 New</span></div>
+            <div style="display:flex;flex-direction:column;gap:.75rem">
+              <div style="padding:.8rem;background:var(--gray-50);border-radius:var(--radius);border-left:3px solid var(--orange)"><div style="font-size:.88rem;font-weight:600">Home Construction</div><div style="font-size:.78rem;color:var(--gray-400)">Jaipur · ₹15-20L · Today</div></div>
+              <div style="padding:.8rem;background:var(--gray-50);border-radius:var(--radius);border-left:3px solid var(--blue)"><div style="font-size:.88rem;font-weight:600">Commercial Renovation</div><div style="font-size:.78rem;color:var(--gray-400)">Jaipur · ₹5-8L · Yesterday</div></div>
+              <div style="padding:.8rem;background:var(--gray-50);border-radius:var(--radius);border-left:3px solid var(--green)"><div style="font-size:.88rem;font-weight:600">Compound Wall</div><div style="font-size:.78rem;color:var(--gray-400)">Jaipur · ₹80K · 2 days ago</div></div>
+            </div>
+          </div>
+          <div style="background:var(--white);border-radius:var(--radius-lg);padding:1.5rem;border:1px solid var(--gray-200)">
+            <div style="font-weight:700;margin-bottom:1rem">Active Projects</div>
+            <div style="display:flex;flex-direction:column;gap:.75rem">
+              <div style="padding:.8rem;background:var(--gray-50);border-radius:var(--radius)"><div style="font-size:.88rem;font-weight:600">Sharma Residence</div><div style="display:flex;align-items:center;gap:8px;margin-top:.4rem"><div style="flex:1;height:6px;background:var(--gray-200);border-radius:3px"><div style="width:70%;height:100%;background:var(--orange);border-radius:3px"></div></div><span style="font-size:.75rem;color:var(--gray-600)">70%</span></div></div>
+              <div style="padding:.8rem;background:var(--gray-50);border-radius:var(--radius)"><div style="font-size:.88rem;font-weight:600">Gupta Villa Foundation</div><div style="display:flex;align-items:center;gap:8px;margin-top:.4rem"><div style="flex:1;height:6px;background:var(--gray-200);border-radius:3px"><div style="width:40%;height:100%;background:var(--blue);border-radius:3px"></div></div><span style="font-size:.75rem;color:var(--gray-600)">40%</span></div></div>
+              <div style="padding:.8rem;background:var(--gray-50);border-radius:var(--radius)"><div style="font-size:.88rem;font-weight:600">Office Renovation</div><div style="display:flex;align-items:center;gap:8px;margin-top:.4rem"><div style="flex:1;height:6px;background:var(--gray-200);border-radius:3px"><div style="width:90%;height:100%;background:var(--green);border-radius:3px"></div></div><span style="font-size:.75rem;color:var(--gray-600)">90%</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== REGISTER PAGE ==================== -->
+<div id="page-register-page" class="page">
+  <div style="padding-top:100px;background:var(--navy);padding-bottom:60px;text-align:center">
+    <span class="section-tag" style="background:rgba(249,115,22,.15);color:var(--orange)">Join Thekedaar</span>
+    <h1 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;color:white;margin-bottom:1rem">Register as a Contractor</h1>
+    <p style="color:rgba(255,255,255,.7);max-width:500px;margin:0 auto">Get more leads, more customers, and grow your business with India's fastest contractor platform.</p>
+  </div>
+  <section>
+    <div class="container" style="max-width:600px">
+      <div style="background:var(--white);border-radius:var(--radius-xl);padding:2.5rem;border:1px solid var(--gray-200)">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+          <div class="form-group"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem">First Name</label><input type="text" style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none" placeholder="Rakesh"/></div>
+          <div class="form-group"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem">Last Name</label><input type="text" style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none" placeholder="Sharma"/></div>
+        </div>
+        <div class="form-group" style="margin-bottom:1rem"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem">Phone Number</label><input type="tel" style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none" placeholder="+91 98765 43210"/></div>
+        <div class="form-group" style="margin-bottom:1rem"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem">Email</label><input type="email" style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none" placeholder="rakesh@email.com"/></div>
+        <div class="form-group" style="margin-bottom:1rem"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem">Primary Service</label><select style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none"><option>Select your specialty</option><option>Civil Contractor</option><option>Plumber</option><option>Electrician</option><option>Painter</option><option>Carpenter</option><option>Interior Designer</option><option>Labour Contractor</option><option>Welder / Fabricator</option><option>Mason</option><option>Flooring Expert</option></select></div>
+        <div class="form-group" style="margin-bottom:1rem"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem">Years of Experience</label><select style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none"><option>Select experience</option><option>Less than 1 year</option><option>1–3 years</option><option>3–5 years</option><option>5–10 years</option><option>10+ years</option></select></div>
+        <div class="form-group" style="margin-bottom:1.5rem"><label style="display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem">City</label><input type="text" style="width:100%;padding:.75rem 1rem;border-radius:var(--radius);border:1.5px solid var(--gray-200);font-family:var(--font-body);outline:none" placeholder="Jaipur"/></div>
+        <button class="btn btn-primary btn-lg" style="width:100%;justify-content:center;border-radius:var(--radius)" onclick="alert('🎉 Registration submitted! Our verification team will contact you within 24 hours. Welcome to Thekedaar!')">Submit Application — It\'s Free</button>
+        <p style="text-align:center;font-size:.8rem;color:var(--gray-400);margin-top:1rem">By registering, you agree to our Terms of Service and Privacy Policy.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+// PAGE NAVIGATION
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const pg=document.getElementById('page-'+name);
+  if(pg){pg.classList.add('active');window.scrollTo(0,0)}
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.remove('active-link');
+    if(a.id==='nav-'+name)a.classList.add('active-link');
+  });
+}
+
+// MOBILE MENU
+function openMobileMenu(){document.getElementById('mobileMenu').classList.add('open')}
+function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+
+// HERO COUNTERS
+function animateCount(el,target,suffix,decimals){
+  let start=0,duration=1800,startTime=null;
+  function step(ts){
+    if(!startTime)startTime=ts;
+    let progress=Math.min((ts-startTime)/duration,1);
+    let ease=1-Math.pow(1-progress,3);
+    let val=decimals?((target*ease).toFixed(1)):(Math.floor(target*ease)).toLocaleString('en-IN');
+    el.textContent=val+suffix;
+    if(progress<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+window.addEventListener('load',()=>{
+  animateCount(document.getElementById('c1'),10000,'+',false);
+  animateCount(document.getElementById('c2'),50,'+',false);
+  animateCount(document.getElementById('c3'),25000,'+',false);
+  animateCount(document.getElementById('c4'),4.8,'★',true);
+});
+
+// FAQ TOGGLE
+function toggleFaq(el){
+  const item=el.parentElement;
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+// POST REQUIREMENT STEPS
+let currentPostStep=0;
+function setPostStep(n){
+  document.querySelectorAll('.post-form-step').forEach((s,i)=>{
+    s.classList.toggle('active',i===n);
+  });
+  document.querySelectorAll('.post-step-btn').forEach((b,i)=>{
+    b.classList.toggle('active',i===n);
+  });
+  currentPostStep=n;
+}
+function selectService(btn){
+  btn.parentElement.querySelectorAll('.service-pick-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+function updateBudget(val){
+  const v=parseInt(val);
+  const fmt=(n)=>{
+    if(n>=100000)return '₹'+(n/100000).toFixed(1)+'L';
+    return '₹'+(n/1000)+'K';
+  };
+  document.getElementById('budgetDisplay').textContent=fmt(v*0.5)+' – '+fmt(v);
+}
+function submitRequirement(){
+  alert('🎉 Your requirement has been posted!\n\nYou will receive quotes from verified contractors within 30 minutes.\n\nCheck your phone for SMS updates.');
+  showPage('home');
+}
+</script>
+</body>
+</html>
